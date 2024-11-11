@@ -19,7 +19,7 @@ class Solution:
         
         for r in range(R):
             for c in range(C):
-                if board[r][c] == word[0] and dfs(0, r, c):                    
+                if dfs(0, r, c):                    
                     return True
         return False
         
