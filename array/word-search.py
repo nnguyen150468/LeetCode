@@ -2,7 +2,7 @@ class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         R, C = len(board), len(board[0])
         def dfs(i, r, c):
-            if i == len(word):
+            if i == len(word) - 1 and board[r][c] == word[len(word)-1]:
                 return True
             char = board[r][c]
             if char != word[i]:
