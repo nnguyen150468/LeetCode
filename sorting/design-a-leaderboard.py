@@ -27,11 +27,13 @@ class Leaderboard:
             prevScore = self.scores[playerId]
             self.scores[playerId] += score
             self.sorted_scores[-prevScore] -= 1
-            if self.sorted_scores[prevScore] == 0:
-                del self.sorted_scores[prevScore]
+            if self.sorted_scores[-prevScore] == 0:
+                del self.sorted_scores[-prevScore]
             newScore = -prevScore-score
-            print(f'newScore: {newScore}')
-            self.sorted_scores[newScore] +=1
+            if newScore in self.sorted_scores:
+                self.sorted_scores[newScore] +=1
+            else:
+                self.sorted_scores[newScore] =1
         else:
             # add score to player and sorted score
             self.scores[playerId] = score
