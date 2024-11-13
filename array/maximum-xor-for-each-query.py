@@ -12,7 +12,6 @@ class Solution:
         '''
         xor_table = [nums[0]] * len(nums)
         for i in range(1, len(nums)):
-            print(i, len(nums))
             xor_table[i] = xor_table[i-1] ^ nums[i]
         res = []
         for i in range(len(nums)-1,-1,-1):
