@@ -14,5 +14,5 @@ class Solution:
             nums[i] = nums[i-1] ^ nums[i]
         res = []
         for i in range(len(nums)-1,-1,-1):
-            res.append(nums[i] ^ (2**maximumBit - 1))
+            res.append(nums[i] ^ ((1 << maximumBit) - 1))
         return res
