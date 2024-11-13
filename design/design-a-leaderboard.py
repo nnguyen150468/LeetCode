@@ -5,7 +5,7 @@ class Leaderboard:
     def __init__(self):
         self.scores = defaultdict(int) # {userID: score}
         self.sorted_scores = SortedDict() # {[-score]: count}        
-
+        self.sorted_scores.setdefault(0)
     '''
     {player 
     
@@ -30,17 +30,11 @@ class Leaderboard:
             if self.sorted_scores[-prevScore] == 0:
                 del self.sorted_scores[-prevScore]
             newScore = -prevScore-score
-            if newScore in self.sorted_scores:
-                self.sorted_scores[newScore] +=1
-            else:
-                self.sorted_scores[newScore] =1
+            self.sorted_scores[newScore] = self.sorted_scores.get(newScore, 0) + 1            
         else:
             # add score to player and sorted score
             self.scores[playerId] = score
-            if -score in self.sorted_scores:
-                self.sorted_scores[-score] += 1
-            else:
-                self.sorted_scores[-score] = 1
+            self.sorted_scores[-score] = self.sorted_scores.get(-score, 0) + 1            
 
     def top(self, K: int) -> int:
         total = count = 0
