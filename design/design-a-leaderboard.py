@@ -42,7 +42,6 @@ class Leaderboard:
 
     def top(self, K: int) -> int:
         total = count = 0
-        print(self.sorted_scores)
         for score in self.sorted_scores:
             times = self.sorted_scores[score]
             score = -score
