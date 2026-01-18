@@ -3,16 +3,30 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        seen = defaultdict(int)
-        for num in nums:
-            seen[num] += 1
-        curr = 0
-        i = 0
-        while curr < 3 and i < len(nums):
-            if seen[curr] > 0:
-                nums[i] = curr
-                seen[curr] -= 1
-                i += 1
-            else:
-                curr += 1
+        l = 0
+        r = len(nums) - 1
+        i = 0   
+    
+        def swap(i, j):
+            temp = nums[j]
+            nums[j] = nums[i]
+            nums[i] = temp
+
+        while i <= r:
+            if nums[i] == 0:
+                swap(l, i)
+                l += 1
+            elif nums[i] == 2:
+                swap(i, r)
+                r -= 1
+                i -= 1
+            i += 1
+
         return nums
+
+        '''
+        [0, 1, 2]
+            l
+            r
+               i
+        '''
